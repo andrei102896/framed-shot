@@ -1,0 +1,783 @@
+/* editor.css - FramedShot v1.3 - Consolidated & Responsive */
+
+/* ============================================
+   1. CSS VARIABLES & RESET
+   ============================================ */
+:root {
+    --color-bg-dark: #121212;
+    --color-bg-medium: #1A1A1A;
+    --color-bg-light: #2D2D2D;
+    --color-border: #333;
+    --color-border-light: #3E3E3E;
+    --color-text: #ffffff;
+    --color-text-muted: #888;
+    --color-text-dim: #aaa;
+    --color-primary: #6366F1;
+    --color-primary-hover: #4F46E5;
+    --color-success: #10b981;
+    --color-gold: #FFD700;
+    --sidebar-width: 320px;
+    --transition-fast: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================
+   2. LAYOUT
+   ============================================ */
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Canvas Area */
+.canvas-area {
+    flex: 1;
+    background-color: var(--color-bg-medium);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    padding: 40px;
+    background-image: 
+        radial-gradient(#2a2a2a 1px, transparent 1px),
+        radial-gradient(#2a2a2a 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+/* ============================================
+   3. SIDEBAR
+   ============================================ */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--color-bg-dark);
+    border-left: 1px solid var(--color-bg-light);
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    transition: transform var(--transition-fast), width var(--transition-fast);
+    z-index: 100;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px 0 24px;
+}
+
+.sidebar-content {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Custom Scrollbar */
+.sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: var(--color-bg-light);
+    border-radius: 3px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-light);
+}
+
+.close-sidebar-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.close-sidebar-btn:hover {
+    color: var(--color-text);
+    background: var(--color-bg-light);
+}
+
+.sidebar-toggle {
+    display: none;
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 101;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-toggle:hover {
+    background: var(--color-primary-hover);
+    transform: scale(1.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, #fff, #aaa);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ============================================
+   4. CONTROL GROUPS
+   ============================================ */
+.control-group {
+    margin-bottom: 16px;
+}
+
+.control-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.value-display {
+    color: var(--color-text-dim);
+    font-weight: 400;
+    font-size: 0.8rem;
+}
+
+/* Sliders */
+input[type=range] {
+    width: 100%;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* Styled Select Dropdown */
+.styled-select {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: var(--color-bg-medium);
+    border: 1px solid var(--color-bg-light);
+    border-radius: 8px;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23888' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    transition: all var(--transition-fast);
+}
+
+.styled-select:hover {
+    border-color: var(--color-border-light);
+}
+
+.styled-select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.styled-select option {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text);
+    padding: 8px;
+}
+
+/* Toggle Groups */
+.toggle-group {
+    display: flex;
+    background: var(--color-bg-medium);
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid var(--color-bg-light);
+    gap: 2px;
+}
+
+.toggle-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    padding: 8px;
+    font-size: 0.85rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.toggle-btn:hover {
+    color: var(--color-text);
+    background: rgba(255,255,255,0.05);
+}
+
+.toggle-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.toggle-btn.active:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+}
+
+/* Button Row (Crop + Reset) */
+.button-row {
+    display: flex;
+    gap: 8px;
+}
+
+.button-row button {
+    flex: 1;
+}
+
+/* ============================================
+   5. COLOR PICKERS & PRESETS
+   ============================================ */
+.color-picker-row {
+    display: flex;
+    gap: 10px;
+}
+
+.color-input-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--color-bg-medium);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid var(--color-bg-light);
+    gap: 8px;
+}
+
+input[type="color"] {
+    border: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
+
+.preset-row {
+    display: flex;
+    gap: 8px; 
+    margin-top: 12px;
+}
+
+.preset-btn {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid #444;
+    cursor: pointer;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
+    padding: 0;
+    flex-shrink: 0;
+}
+
+.preset-btn:hover {
+    transform: scale(1.2);
+    border-color: #fff;
+    box-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+/* Preset Colors */
+.preset-btn[title*="Hyper Blue"] { background: linear-gradient(135deg, #4F46E5, #06B6D4); }
+.preset-btn[title*="Slate Dark"] { background: linear-gradient(135deg, #0F172A, #334155); }
+.preset-btn[title*="LinkedIn"] { background: linear-gradient(135deg, #0077B5, #00A0DC); }
+.preset-btn[title*="Unicorn"] { background: linear-gradient(135deg, #7C3AED, #C026D3); }
+.preset-btn[title*="Sunset"] { background: linear-gradient(135deg, #F59E0B, #EC4899); }
+.preset-btn[title*="Aurora"] { background: linear-gradient(135deg, #10B981, #3B82F6); }
+.preset-btn[title*="Fire"] { background: linear-gradient(135deg, #F43F5E, #FBBF24); }
+.preset-btn[title*="OLED Black"] { background: linear-gradient(135deg, #111827, #000000); }
+
+/* ============================================
+   6. BUTTONS (Consolidated)
+   ============================================ */
+
+/* Base Button Styles */
+.btn-primary,
+.btn-secondary,
+.btn-primary-small,
+.btn-primary-large,
+#startCropBtn,
+#resetBtn,
+#applyCropBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+/* Primary Button */
+.btn-primary,
+#applyCropBtn {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.btn-primary:hover,
+#applyCropBtn:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+    border: 1px solid var(--color-border-light);
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-border-light);
+    border-color: #555;
+    transform: translateY(-1px);
+}
+
+/* Small Primary Button (Upgrade) */
+.btn-primary-small {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+}
+
+.btn-primary-small:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Large Primary Button (Buy) */
+.btn-primary-large {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 14px 24px;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.btn-primary-large:hover {
+    background-color: var(--color-primary-hover);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+/* Tool Buttons (Crop, Reset) */
+#startCropBtn,
+#resetBtn {
+    background-color: var(--color-bg-light);
+    color: var(--color-text);
+    border: 1px solid var(--color-border-light);
+    padding: 10px 15px;
+    font-weight: 500;
+}
+
+#startCropBtn:hover,
+#resetBtn:hover {
+    background-color: var(--color-border-light);
+    border-color: #555;
+    transform: translateY(-1px);
+}
+
+/* Text Button (Cancel, Close) */
+.btn-text,
+#cancelCropBtn {
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    transition: color var(--transition-fast);
+}
+
+.btn-text:hover,
+#cancelCropBtn:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+}
+
+/* Export Buttons Row */
+.export-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.export-buttons .btn-primary,
+.export-buttons .btn-secondary {
+    flex: 1;
+}
+
+/* When copy button is hidden, make download full width */
+.export-buttons .btn-secondary:only-child,
+.export-buttons > button:only-of-type:not([style*="display: none"] + button) {
+    flex: 1;
+}
+
+/* ============================================
+   7. DONATE BOX
+   ============================================ */
+/* Sticky bottom section */
+.sidebar-bottom {
+    margin-top: auto;
+    padding-top: 12px;
+}
+
+.donate-container {
+    position: relative;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border: 1px solid var(--color-bg-light);
+    border-radius: 12px;
+    padding: 16px;
+    padding-top: 28px;
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.close-donate-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: all var(--transition-fast);
+}
+
+.close-donate-btn:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.donate-text {
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    margin-bottom: 12px;
+}
+
+.btn-donate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.btn-donate:hover {
+    background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+/* ============================================
+   8. MODALS
+   ============================================ */
+.modal-backdrop {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-content {
+    background: #1E1E1E;
+    width: 400px;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.large-modal {
+    width: 90%;
+    height: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
+    background: #111;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    background: #1E1E1E;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.modal-header h2 {
+    font-size: 1.2rem;
+    color: var(--color-text);
+}
+
+.crop-container {
+    flex: 1;
+    background: #000;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.crop-container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.modal-footer {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid var(--color-border);
+    background: #1E1E1E;
+}
+
+.modal-footer #applyCropBtn {
+    width: auto;
+    padding: 10px 20px;
+}
+
+.activation-area {
+    margin-bottom: 10px;
+}
+
+.modal-divider {
+    margin: 20px 0;
+    color: #555;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.modal-divider::before,
+.modal-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+}
+
+/* ============================================
+   9. INPUT FIELDS
+   ============================================ */
+input[type="text"] {
+    width: 100%;
+    background: #111;
+    border: 1px solid var(--color-border);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: var(--color-primary);
+}
+
+/* Settings Checkbox */
+.settings-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding: 0 4px;
+}
+
+.settings-row input[type="checkbox"] {
+    accent-color: var(--color-primary);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.settings-row label {
+    margin-bottom: 0;
+    font-size: 0.85rem;
+    color: var(--color-text-dim);
+    cursor: pointer;
+    font-weight: 400;
+}
+
+/* Divider */
+.divider {
+    display: block;
+    border: 0;
+    height: 1px;
+    background: var(--color-border-light);
+    margin: 12px 0;
+    width: 100%;
+}
+
+/* ============================================
+   10. RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 280px;
+    }
+    
+    .canvas-area {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        height: 100vh;
+        width: 300px;
+        transform: translateX(0);
+        box-shadow: -4px 0 20px rgba(0,0,0,0.5);
+    }
+    
+    .sidebar.collapsed {
+        transform: translateX(100%);
+    }
+    
+    .sidebar-toggle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .sidebar.collapsed + .sidebar-toggle .toggle-icon,
+    .sidebar-toggle .toggle-icon {
+        transition: transform var(--transition-fast);
+    }
+    
+    .close-sidebar-btn {
+        display: block;
+    }
+    
+    .canvas-area {
+        width: 100%;
+        height: 100vh;
+        padding: 16px;
+        padding-bottom: 80px;
+    }
+    
+    .keyboard-hint {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
+    
+    .toggle-group {
+        flex-wrap: wrap;
+    }
+    
+    .toggle-btn {
+        min-width: calc(50% - 2px);
+    }
+    
+    .export-buttons {
+        flex-direction: column;
+    }
+    
+    .button-row {
+        flex-direction: column;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 20px;
+    }
+}
