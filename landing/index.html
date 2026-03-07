@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FramedShot - Professional Screenshot Frames for Chrome</title>
-    <meta name="description" content="Transform ordinary screenshots into stunning visuals. Add beautiful gradient backgrounds, shadows, and rounded corners in one click. Free Chrome extension.">
-    <meta property="og:title" content="FramedShot - Professional Screenshot Frames">
-    <meta property="og:description" content="Transform screenshots into stunning visuals with beautiful frames. Free Chrome extension.">
+    <title>FramedShot — Screenshot Framing for Chrome</title>
+    <meta name="description" content="Turn plain screenshots into polished visuals. Gradient backgrounds, annotation tools, platform presets, batch export, dark & light theme. Free Chrome extension.">
+    <meta property="og:title" content="FramedShot — Screenshot Framing for Chrome">
+    <meta property="og:description" content="Turn plain screenshots into polished visuals with FramedShot. Free Chrome extension.">
     <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="128x128" href="/apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,11 +21,11 @@
         }
 
         :root {
-            --gradient-start: #0077B5;
-            --gradient-end: #00A0DC;
-            --accent: #00A0DC;
-            --bg-primary: #050508;
-            --bg-secondary: #0a0a0f;
+            --gradient-start: #7c3aed;
+            --gradient-end: #06b6d4;
+            --accent: #06b6d4;
+            --bg-primary: #050506;
+            --bg-secondary: #09090b;
             --bg-card: rgba(255, 255, 255, 0.03);
             --bg-card-hover: rgba(255, 255, 255, 0.06);
             --border-color: rgba(255, 255, 255, 0.08);
@@ -31,7 +33,7 @@
             --text-primary: #ffffff;
             --text-secondary: rgba(255, 255, 255, 0.6);
             --text-tertiary: rgba(255, 255, 255, 0.4);
-            --glow: rgba(0, 160, 220, 0.15);
+            --glow: rgba(124, 58, 237, 0.2);
         }
 
         html {
@@ -45,6 +47,9 @@
             line-height: 1.6;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
         }
 
         /* Animated gradient background */
@@ -54,10 +59,10 @@
             left: 0;
             right: 0;
             height: 100vh;
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 119, 181, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(0, 160, 220, 0.08), transparent),
-                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(79, 70, 229, 0.08), transparent);
+            background:
+                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(124, 58, 237, 0.18), transparent),
+                radial-gradient(ellipse 60% 40% at 80% 50%, rgba(6, 182, 212, 0.08), transparent),
+                radial-gradient(ellipse 50% 30% at 20% 80%, rgba(124, 58, 237, 0.07), transparent);
             pointer-events: none;
             z-index: -1;
         }
@@ -100,12 +105,9 @@
         .nav-logo-icon {
             width: 32px;
             height: 32px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
+            object-fit: cover;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
         }
 
         .nav-cta {
@@ -163,8 +165,14 @@
             animation: fadeInUp 0.6s ease 0.1s both;
         }
 
+        .hero-title-line {
+            display: block;
+        }
+
         .hero-title-gradient {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end), #7C3AED);
+            display: block;
+            margin-top: 6px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end), #818CF8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -199,12 +207,12 @@
             font-weight: 600;
             font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 24px rgba(0, 119, 181, 0.3);
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.35);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(0, 119, 181, 0.4);
+            box-shadow: 0 8px 40px rgba(124, 58, 237, 0.45);
         }
 
         .btn-primary svg {
@@ -399,8 +407,8 @@
         .feature-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, rgba(0, 119, 181, 0.2), rgba(0, 160, 220, 0.1));
-            border: 1px solid rgba(0, 160, 220, 0.2);
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(6, 182, 212, 0.12));
+            border: 1px solid rgba(124, 58, 237, 0.28);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -459,7 +467,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin: 0 auto 24px;
-            box-shadow: 0 8px 32px rgba(0, 119, 181, 0.3);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.35);
         }
 
         .step-title {
@@ -634,10 +642,10 @@
     <nav>
         <div class="container nav-content">
             <a href="#" class="nav-logo">
-                <span class="nav-logo-icon">📸</span>
+                <img class="nav-logo-icon" src="/apple-touch-icon.png" alt="FramedShot logo" width="32" height="32">
                 FramedShot
             </a>
-            <a href="CHROME_STORE_URL" class="nav-cta">Add to Chrome — Free</a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andrei.projects%40proton.me&su=FramedShot%20feedback&body=Hi%20Andrei%2C%0A%0AI%20wanted%20to%20share%20this%20feedback%3A%0A" target="_blank" rel="noopener noreferrer" class="nav-cta">Feedback</a>
         </div>
     </nav>
 
@@ -649,16 +657,16 @@
                 Now available on Chrome Web Store
             </div>
             <h1 class="hero-title">
-                Screenshots that<br>
-                <span class="hero-title-gradient">look professional</span>
+                <span class="hero-title-line">Screenshots that</span>
+                <span class="hero-title-line hero-title-gradient">actually look good.</span>
             </h1>
             <p class="hero-subtitle">
-                Transform ordinary screenshots into stunning visuals. Add beautiful backgrounds, shadows, and rounded corners in one click.
+                Frame, annotate, and export screenshots in seconds. Gradient backgrounds, platform presets, privacy tools, and batch export — all in one Chrome extension.
             </p>
             <div class="hero-actions">
-                <a href="CHROME_STORE_URL" class="btn-primary">
+                <a href="https://chromewebstore.google.com/detail/framedshot/ojodikaampkjmcldckbcgfohhcaaohhe?authuser=0&hl=en" class="btn-primary">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.952 6.848a12.014 12.014 0 0 0 9.603-5.637A11.96 11.96 0 0 0 24 12c0-.063-.002-.125-.003-.188H15.27z"/></svg>
-                    Add to Chrome — It's Free
+                    Add to Chrome
                 </a>
                 <a href="#demo" class="btn-secondary">
                     See it in action ↓
@@ -691,38 +699,38 @@
             <span class="section-label">Features</span>
             <h2 class="section-title">Everything you need</h2>
             <p class="section-subtitle">
-                Professional-grade tools to make your screenshots stand out on social media, presentations, and docs.
+                Professional tools to make your screenshots stand out — for social media, docs, and presentations.
             </p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Stunning Gradients</h3>
-                    <p class="feature-desc">Choose from beautiful presets or create custom gradient backgrounds that make your content pop.</p>
+                    <div class="feature-icon">📐</div>
+                    <h3 class="feature-title">Platform Presets</h3>
+                    <p class="feature-desc">Ready-made canvas sizes for Instagram, X, LinkedIn, Pinterest, and YouTube. Or set a fully custom size in seconds.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">One-Click Capture</h3>
-                    <p class="feature-desc">Capture any browser tab instantly. No complicated setup, permissions, or account required.</p>
+                    <div class="feature-icon">📦</div>
+                    <h3 class="feature-title">Batch Export ZIP</h3>
+                    <p class="feature-desc">Export one design to every platform format at once and download everything as a single ZIP file.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">✂️</div>
-                    <h3 class="feature-title">Smart Cropping</h3>
-                    <p class="feature-desc">Built-in crop tool with aspect ratio presets. Perfect for social media dimensions.</p>
+                    <div class="feature-icon">✏️</div>
+                    <h3 class="feature-title">Annotations & Privacy</h3>
+                    <p class="feature-desc">Draw arrows, highlight areas, add text, then blur or pixelate sensitive details before sharing.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌗</div>
-                    <h3 class="feature-title">Shadow & Depth</h3>
-                    <p class="feature-desc">Add realistic shadows and rounded corners to give your screenshots that polished, floating look.</p>
+                    <h3 class="feature-title">Dark & Light Theme</h3>
+                    <p class="feature-desc">Switch between dark and light editor themes. Your preference is saved and persists across sessions.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3 class="feature-title">Copy or Download</h3>
-                    <p class="feature-desc">Export as high-quality PNG or copy directly to clipboard. Perfect for quick sharing.</p>
+                    <div class="feature-icon">🎛️</div>
+                    <h3 class="feature-title">Layout Controls</h3>
+                    <p class="feature-desc">Tune padding, corner radius, shadow, image fit, and more for clean, consistent visuals every time.</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💾</div>
-                    <h3 class="feature-title">Save Settings</h3>
-                    <p class="feature-desc">Your preferences are remembered. Set it once, create consistent visuals every time.</p>
+                    <div class="feature-icon">⌨️</div>
+                    <h3 class="feature-title">Keyboard Shortcuts</h3>
+                    <p class="feature-desc">Power-user shortcuts for export, copy, undo, tool switching, and more. Work faster without reaching for the mouse.</p>
                 </div>
             </div>
         </div>
@@ -760,18 +768,18 @@
     <section class="cta">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Ready to level up your screenshots?</h2>
+                <h2 class="cta-title">Your screenshots deserve better.</h2>
                 <p class="cta-subtitle">
-                    Join creators, developers, and marketers who make their visuals stand out.
+                    Creators, developers, and marketers use FramedShot to make visuals that actually get noticed.
                 </p>
-                <a href="CHROME_STORE_URL" class="btn-primary">
+                <a href="https://chromewebstore.google.com/detail/framedshot/ojodikaampkjmcldckbcgfohhcaaohhe?authuser=0&hl=en" class="btn-primary">
                     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-3.952 6.848a12.014 12.014 0 0 0 9.603-5.637A11.96 11.96 0 0 0 24 12c0-.063-.002-.125-.003-.188H15.27z"/></svg>
-                    Install FramedShot — Free Forever
+                    Install FramedShot
                 </a>
                 <div class="cta-stats">
                     <div class="stat">
-                        <div class="stat-value">100%</div>
-                        <div class="stat-label">Free</div>
+                        <div class="stat-value">Free</div>
+                        <div class="stat-label">No subscription</div>
                     </div>
                     <div class="stat">
                         <div class="stat-value">0</div>
@@ -793,10 +801,32 @@
                 © 2026 FramedShot. Made with ☕ by Andrei.
             </div>
             <div class="footer-links">
-                <a href="https://gumroad.com/l/framedshot">Support the project</a>
-                <a href="mailto:hello@framedshot.app">Contact</a>
+                <a href="https://gumroad.com/l/framedshot" target="_blank" rel="noopener noreferrer">Support the project</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=andrei.projects%40proton.me&su=FramedShot%20feedback&body=Hi%20Andrei%2C%0A%0AI%20wanted%20to%20share%20this%20feedback%3A%0A" target="_blank" rel="noopener noreferrer">Contact</a>
             </div>
         </div>
     </footer>
+
+    <script>
+        (() => {
+            const blockedEvents = ['copy', 'cut', 'contextmenu', 'selectstart', 'dragstart'];
+
+            blockedEvents.forEach((eventName) => {
+                document.addEventListener(eventName, (event) => {
+                    const target = event.target;
+                    const tag = target && target.tagName ? target.tagName.toLowerCase() : '';
+                    if (tag === 'input' || tag === 'textarea') return;
+                    event.preventDefault();
+                });
+            });
+
+            document.addEventListener('keydown', (event) => {
+                const key = String(event.key || '').toLowerCase();
+                if ((event.ctrlKey || event.metaKey) && (key === 'c' || key === 'x')) {
+                    event.preventDefault();
+                }
+            });
+        })();
+    </script>
 </body>
 </html>

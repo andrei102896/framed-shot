@@ -1,0 +1,29 @@
+{
+  "name": "framedshot",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "FramedShot Chrome extension",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint \"src/**/*.js\" \"src/**/*.jsx\""
+  },
+  "dependencies": {
+    "cropperjs": "^1.6.2",
+    "lucide-react": "^0.468.0",
+    "motion": "^12.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.22.0",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.5"
+  }
+}

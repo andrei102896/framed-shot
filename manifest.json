@@ -1,27 +1,36 @@
 {
   "manifest_version": 3,
   "name": "FramedShot",
-  "version": "1.5",
-  "description": "Capture the current tab and wrap it in a professional designer frame.",
+  "version": "2.0",
+  "description": "Turn plain screenshots into polished visuals with social-ready sizes, clean markup, and fast export or copy.",
   "permissions": [
     "activeTab",
     "contextMenus",
+    "scripting",
     "storage"
   ],
+  "commands": {
+    "capture-visible": {
+      "description": "Capture the visible tab and open FramedShot"
+    },
+    "capture-selection": {
+      "description": "Select an area on the page and open it in FramedShot"
+    }
+  },
   "icons": {
-    "16": "icons/icon-16.png",
-    "48": "icons/icon-48.png",
-    "128": "icons/icon-128.png"
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
   },
   "action": {
     "default_title": "Frame this Shot",
     "default_icon": {
-      "16": "icons/icon-16.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
+      "16": "assets/icons/icon-16.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
     }
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "src/background/background.js"
   }
 }
