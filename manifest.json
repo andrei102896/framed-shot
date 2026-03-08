@@ -10,24 +10,21 @@
     "storage"
   ],
   "commands": {
-    "capture-visible": {
-      "description": "Capture the visible tab and open FramedShot"
-    },
     "capture-selection": {
       "description": "Select an area on the page and open it in FramedShot"
     }
   },
   "icons": {
-    "16": "assets/icons/icon-16.png",
-    "48": "assets/icons/icon-48.png",
-    "128": "assets/icons/icon-128.png"
+    "16": "assets/icons/framedshot-logo.png",
+    "48": "assets/icons/framedshot-logo.png",
+    "128": "assets/icons/framedshot-logo.png"
   },
   "action": {
     "default_title": "Frame this Shot",
     "default_icon": {
-      "16": "assets/icons/icon-16.png",
-      "48": "assets/icons/icon-48.png",
-      "128": "assets/icons/icon-128.png"
+      "16": "assets/icons/framedshot-logo.png",
+      "48": "assets/icons/framedshot-logo.png",
+      "128": "assets/icons/framedshot-logo.png"
     }
   },
   "background": {

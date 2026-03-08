@@ -1,7 +1,6 @@
 // background.js
 
 const MENU_CAPTURE_VISIBLE = 'frame-shot';
-const COMMAND_CAPTURE_VISIBLE = 'capture-visible';
 const COMMAND_CAPTURE_SELECTION = 'capture-selection';
 const RESTRICTED_URL_PREFIXES = [
     'chrome://',
@@ -61,17 +60,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.commands.onCommand.addListener(async (command) => {
+    if (command !== COMMAND_CAPTURE_SELECTION) return;
     const tab = await getActiveTab();
     if (!tab) return;
-
-    if (command === COMMAND_CAPTURE_VISIBLE) {
-        captureVisibleAndOpenEditor(tab);
-        return;
-    }
-
-    if (command === COMMAND_CAPTURE_SELECTION) {
-        captureSelectionAndOpenEditor(tab);
-    }
+    captureSelectionAndOpenEditor(tab);
 });
 
 async function captureVisibleAndOpenEditor(tab) {
@@ -171,8 +163,8 @@ async function requestAreaSelection(tabId) {
             overlay.style.touchAction = 'none';
 
             box.style.position = 'fixed';
-            box.style.border = '2px solid #6366F1';
-            box.style.background = 'rgba(99, 102, 241, 0.12)';
+            box.style.border = '2px solid #7c3aed';
+            box.style.background = 'rgba(124, 58, 237, 0.12)';
             box.style.boxShadow = '0 0 0 1px rgba(255, 255, 255, 0.22), 0 18px 40px rgba(0, 0, 0, 0.28)';
             box.style.borderRadius = '12px';
             box.style.display = 'none';
