@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "FramedShot",
-  "version": "2.0",
+  "version": "2.1",
   "description": "Turn plain screenshots into polished visuals with social-ready sizes, clean markup, and fast export or copy.",
   "permissions": [
     "activeTab",
